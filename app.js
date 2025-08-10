@@ -368,18 +368,20 @@ function showLoginScreen() {
 }
 
 function showMainApp() {
-  const loginScreen = document.getElementById('loginScreen');
-  const mainApp = document.getElementById('mainApp');
-  
-  if (loginScreen) loginScreen.classList.add('hidden');
-  if (mainApp) mainApp.classList.remove('hidden');
-  
+  const loginScreen = document.getElementById("loginScreen");
+  const mainApp = document.getElementById("mainApp");
+
+  if (loginScreen) loginScreen.classList.add("hidden");
+  if (mainApp) mainApp.classList.remove("hidden");
+
   // Set current user
-  const currentUserEl = document.getElementById('currentUser');
+  const currentUserEl = document.getElementById("currentUser");
   if (currentUserEl) {
     currentUserEl.textContent = appData.currentUser;
   }
-  
+
+  switchTab('dashboard');
+
   // Initialize dashboard and other components
   updateDashboard();
   renderQueue();
@@ -387,10 +389,10 @@ function showMainApp() {
   renderDoctors();
   populateDoctorSelect();
   populateFilterOptions();
-  
+
   // Ensure icons are rendered
   setTimeout(() => {
-    if (typeof lucide !== 'undefined') {
+    if (typeof lucide !== "undefined") {
       lucide.createIcons();
     }
   }, 50);
